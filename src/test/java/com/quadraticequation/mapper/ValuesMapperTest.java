@@ -5,7 +5,6 @@ import com.quadraticequation.model.dto.ValuesAndResults;
 import com.quadraticequation.model.entity.QuadraticValues;
 import com.quadraticequation.util.DataTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.LineSeparatorDetector;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

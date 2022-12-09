@@ -3,7 +3,6 @@ package com.quadraticequation.controller;
 import com.quadraticequation.model.dto.Request;
 import com.quadraticequation.model.dto.Result;
 import com.quadraticequation.model.dto.ValuesAndResults;
-import com.quadraticequation.model.entity.QuadraticValues;
 import com.quadraticequation.service.QuadraticService;
 import com.quadraticequation.util.DataTest;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class QuadraticControllerTest {
         when(quadraticService.quadraticEquation(any(Request.class))).thenReturn(resultMock);
         Request requestMock = DataTest.request();
 
-        ResponseEntity<Result> responseEntity = quadraticController.quadraticEquation(requestMock);
+        ResponseEntity<Result> responseEntity = quadraticController.calculateQuadraticEquation(requestMock);
         assertThat(responseEntity.getStatusCodeValue()).isEqualTo(200);
         assertThat(responseEntity.getBody()).isEqualTo(resultMock);
     }
@@ -45,7 +44,7 @@ class QuadraticControllerTest {
 
         when(quadraticService.getAllQuadraticValuesAndAnswers()).thenReturn(valuesAndResultsListMock);
 
-        ResponseEntity<List<ValuesAndResults>> responseEntity = quadraticController.getAllQuadraticValuesAndAnswers();
+        ResponseEntity<List<ValuesAndResults>> responseEntity = quadraticController.getAllQuadraticValuesAndResults();
 
         assertThat(responseEntity.getStatusCodeValue()).isEqualTo(200);
         assertThat(responseEntity.getBody().size()).isEqualTo(valuesAndResultsListMock.size());
