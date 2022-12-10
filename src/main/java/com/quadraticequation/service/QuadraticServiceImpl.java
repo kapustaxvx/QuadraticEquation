@@ -45,6 +45,7 @@ public class QuadraticServiceImpl implements QuadraticService {
         LOG.info("Сохраняем ответ: [{}] в БД", quadraticAnswers);
 
         final QuadraticValues quadraticValues = valuesMapper.toQuadraticValues(request);
+        quadraticValues.setAnswers(quadraticAnswers);
         valuesRepository.save(quadraticValues);
         LOG.info("Сохраняем переменные: [{}] в БД", quadraticValues);
 
