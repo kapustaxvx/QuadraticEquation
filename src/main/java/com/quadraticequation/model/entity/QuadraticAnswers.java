@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "quadratic_answers")
 public class QuadraticAnswers {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true, nullable = false)
     @SequenceGenerator(name = "quadratic_answers_sequence",
             sequenceName = "quadratic_answers_sequence",
             allocationSize = 1)

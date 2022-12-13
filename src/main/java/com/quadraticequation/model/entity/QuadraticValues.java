@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "quadratic_values")
 public class QuadraticValues {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true, nullable = false)
     @SequenceGenerator(name = "quadratic_values_sequence",
             sequenceName = "quadratic_values_sequence",
             allocationSize = 1)
@@ -21,7 +21,7 @@ public class QuadraticValues {
     @Column(name="c", nullable = false)
     private Double c;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_answer_id", referencedColumnName = "id")
     private QuadraticAnswers answers;
 
