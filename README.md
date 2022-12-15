@@ -35,6 +35,56 @@
 - Для отображения всех успешных запросов и ответов необходимо отправить GET запрос на адрес
   localhost:8000/api/all
   ![alt text](screenshots/postmanall.png) 
-  
 
-  
+
+
+DOCKER
+
+Собрать Dockerfile 
+     
+    docker build -t quadratic-app:1 . 
+
+Создать кастомную сеть
+
+    docker network create back_net
+
+Создать volume
+
+    docker volume create db_vol
+
+Запустить Postgres
+
+    docker run --rm -d \
+    --name database \
+    --net=back_net \
+    -v db_vol:/var/lib/postgresql/data \
+    -e POSTGRES_PASSWORD=admin \
+    -e POSTGRES_USER=admin \
+    -e POSTGRES_DB=test_db \
+    postgres:14
+
+Запустить 3 контейнера с приложением с названиями backend_1, backend_2 и backend_3
+
+    docker run --rm -d \
+    --name backend_3 \
+    --net=back_net \
+    -e PS_HOST=database \
+    -e PS_DB=test_db \
+    -e PS_USER=admin \
+    -e PS_PASSWORD=admin \
+    quadratic-app:1
+
+Запустить балансировщик нагрузки nginx
+
+    docker run --rm -d \
+    --name nginx \
+    --net=back_net \
+    -p 80:80 \
+    -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf \
+    nginx
+
+
+Можно пользоваться API без указания порта
+
+    curl localhost/api/all
+
