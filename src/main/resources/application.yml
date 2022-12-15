@@ -3,22 +3,16 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:6666/test_db
+    url: jdbc:postgresql://${PS_HOST}:5432/${PS_DB}   #PS_DB=test_db
     driver-class-name: org.postgresql.Driver
-    username: admin
-    password: admin
+    username: ${PS_USER}                               #PS_USER=admin
+    password: ${PS_PASSWORD}                           #PS_PASSWORD=admin
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
     defer-datasource-initialization: true
     database: postgresql
     hibernate:
       ddl-auto: update
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings.trace: false
-      settings.web-allow-others: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
