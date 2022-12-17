@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${PS_HOST}:5432/${PS_DB}   #PS_DB=test_db
+    url: jdbc:postgresql://${PS_HOST}:5432/${PS_DB}
     driver-class-name: org.postgresql.Driver
-    username: ${PS_USER}                               #PS_USER=admin
-    password: ${PS_PASSWORD}                           #PS_PASSWORD=admin
+    username: ${PS_USER}
+    password: ${PS_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
     defer-datasource-initialization: true
