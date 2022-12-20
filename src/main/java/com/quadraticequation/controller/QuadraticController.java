@@ -26,13 +26,13 @@ public class QuadraticController {
     @ApiOperation(value = "Calculate quadratic equation ", notes = "Returns an answer of this equation")
     @PostMapping(value = "/calculate")
     public ResponseEntity<Result> calculateQuadraticEquation(@Valid @RequestBody Request request){
-        return ok(quadraticService.quadraticEquation(request));
+        return ok().body(quadraticService.quadraticEquation(request));
     }
 
     @ApiOperation(value = "Get all values and results ", notes = "Returns all calculations and answers of them")
     @GetMapping(value = "/all")
     public ResponseEntity<List<ValuesAndResults>> getAllQuadraticValuesAndResults(){
-        return ok(quadraticService.getAllQuadraticValuesAndAnswers());
+        return ok().body(quadraticService.getAllQuadraticValuesAndAnswers());
     }
 }
 

@@ -1,14 +1,9 @@
-server:
-  port: 8000
-
 spring:
-  profiles:
-    active: local
   datasource:
-    url: jdbc:postgresql://${PS_HOST}:5432/${PS_DB}
+    url: jdbc:postgresql://localhost:6666/test_db
     driver-class-name: org.postgresql.Driver
-    username: ${PS_USER}
-    password: ${PS_PASSWORD}
+    username: admin
+    password: admin
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     defer-datasource-initialization: true
@@ -22,12 +17,3 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
-
-
-logging:
-  file:
-    name: logger.log
-  level:
-    org:
-      springframework: INFO

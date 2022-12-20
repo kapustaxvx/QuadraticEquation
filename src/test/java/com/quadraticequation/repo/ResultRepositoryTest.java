@@ -1,5 +1,7 @@
 package com.quadraticequation.repo;
 
+import com.quadraticequation.QuadraticEquationApplication;
+import com.quadraticequation.TestConfig;
 import com.quadraticequation.model.entity.QuadraticAnswers;
 import com.quadraticequation.util.DataTest;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -19,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
+@ContextConfiguration(classes = TestConfig.class)
 class ResultRepositoryTest {
     @Autowired
     ResultRepository resultRepository;
