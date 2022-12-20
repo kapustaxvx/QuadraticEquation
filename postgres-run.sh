@@ -1,0 +1,1 @@
+docker run --rm -d -p 6666:5432 -e POSTGRES_DB=test_db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin postgres:14
